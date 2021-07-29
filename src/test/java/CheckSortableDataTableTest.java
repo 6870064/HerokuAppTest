@@ -6,28 +6,23 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CheckSortableDataTableTest extends BaseTest {
 
     @Test
-    public void checkDropdownListElements(){
+    public void checkDropdownListElements() {
         driver.get("http://the-internet.herokuapp.com/tables");
-        WebElement element = (WebElement) driver.findElement(By.id("dropdown"));
-        Select dropDownSelect = new Select(element);
-
-        List<WebElement> option = dropDownSelect.getOptions(); //Взять все элементы дроп-дауна
-        // и проверить их наличие
-        assertEquals(option.get(0).getText(), "Please select an option");
-        assertEquals(option.get(1).getText(), "Option 1");
-        assertEquals(option.get(2).getText(), "Option 2");
-
-        dropDownSelect.selectByIndex(1); // выбрать первый элемент
-        String dropDownText = dropDownSelect.getFirstSelectedOption().getText();
-        assertEquals(dropDownText, "Option 1"); //проверка того, что выбран первый элемент
-
-        dropDownSelect.selectByIndex(2); // выбрать второй элемент
-        String dropDownText2 = dropDownSelect.getFirstSelectedOption().getText();
-        assertEquals(dropDownText2, "Option 2"); //проверка того, что выбран второй элемент
+        //tr[1]//td[1]  tr - строка; td - столбец
+        WebElement tableElement1 = driver.findElement(By.xpath("//table//tr[1]//td[1]")); // Реки говнокода =))
+        WebElement tableElement2 = driver.findElement(By.xpath("//table//tr[1]//td[2]"));
+        WebElement tableElement3 = driver.findElement(By.xpath("//table//tr[3]//td[3]"));
+        WebElement tableElement4 = driver.findElement(By.xpath("//table//tr[4]//td[4]"));
+        WebElement tableElement5 = driver.findElement(By.xpath("//table//tr[4]//td[5]"));
+        assertEquals(tableElement1.getText(),"Smith", " " +tableElement1+ " last name has not found");
+        assertEquals(tableElement2.getText(),"John", " " +tableElement2+ " first name has not found");
+        assertEquals(tableElement3.getText(),"jdoe@hotmail.com", " " +tableElement4+ " email has not found");
+        assertEquals(tableElement5.getText(),"http://www.timconway.com", " " +tableElement5+ " price has not found");
     }
 }
 
