@@ -18,8 +18,8 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);//Неявные ожидания
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        driver.quit();
-    }
+  //  @AfterMethod(alwaysRun = true)
+  //  public void tearDown() {
+   //     driver.quit();
+   // }
 }
