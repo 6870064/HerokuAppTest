@@ -23,3 +23,14 @@ public abstract class BaseTest {
         driver.quit();
     }
 }
+
+/*
+git branch *title of the lesson
+git add .
+git status
+git tag v1.5
+git commit -am ' text of message'
+git push
+ */
+
+

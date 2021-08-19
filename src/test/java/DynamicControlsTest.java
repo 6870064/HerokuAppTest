@@ -2,8 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
 import java.util.List;
+
 import static org.testng.Assert.assertEquals;
+
 public class DynamicControlsTest extends BaseTest {
 
     @Test
@@ -14,8 +17,9 @@ public class DynamicControlsTest extends BaseTest {
         driver.findElement(By.xpath("//button[text()='Remove']")).click(); // Нажать на кнопку
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        String test_text2 = driver.findElement(By.id("message")).getText();
-        assertEquals(test_text2, "It's gone!", "A checkbox hasn't gone"); //Дождался надписи “It’s gone”
+
+        String textForTest2 = driver.findElement(By.id("message")).getText();
+        assertEquals(textForTest2, "It's gone!", "A checkbox hasn't gone"); //Дождался надписи “It’s gone”
 
         List<WebElement> dynamicElement = driver.findElements(By.xpath("//*[@type='checkbox']"));
         boolean isPresented = dynamicElement.size() != 0;
@@ -29,9 +33,10 @@ public class DynamicControlsTest extends BaseTest {
 
         driver.findElement(By.xpath("//button[text()='Enable']")).click();// Нажать на кнопку Enable
 
-        WebDriverWait wait2 = new WebDriverWait(driver, 10);
-        String test_text3 = driver.findElement(By.id("message")).getText();
-        assertEquals(test_text3, "It's enabled!", "Input is not enabled"); //Дождался надписи
+        WebElement element = wait.until(d -> d.findElement(By.id("message")));
+
+        String textForTest3 = element.getText();
+        assertEquals(textForTest3, "It's enabled!", "Input is not enabled"); //Дождался надписи
         // It's enabled!”
 
         boolean input_state2 = driver.findElement(By.cssSelector("[type='text']")).isEnabled();

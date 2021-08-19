@@ -17,8 +17,8 @@ public class FileUploadTest extends BaseTest {
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
 
-        String file_title = driver.findElement(By.id("uploaded-files")).getText();
-        assertEquals(file_title, "152360.jpeg", "Title of the uploaded file is nnot equal"); //Проверить, что имя файла
+        String titleOfFile = driver.findElement(By.id("uploaded-files")).getText();
+        assertEquals(titleOfFile, "152360.jpeg", "Title of the uploaded file is nnot equal"); //Проверить, что имя файла
         // на странице совпадает с именем загруженного файла
 
         driver.findElement(By.id("uploaded-files")).getText();
