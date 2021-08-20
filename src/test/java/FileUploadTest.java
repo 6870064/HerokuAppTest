@@ -18,12 +18,12 @@ public class FileUploadTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, 5);
 
         String titleOfFile = driver.findElement(By.id("uploaded-files")).getText();
-        assertEquals(titleOfFile, "152360.jpeg", "Title of the uploaded file is nnot equal"); //Проверить, что имя файла
+        assertEquals(titleOfFile, "152360.jpeg", "Title of the uploaded file is not equal"); //Проверить, что имя файла
         // на странице совпадает с именем загруженного файла
 
         driver.findElement(By.id("uploaded-files")).getText();
-        String text_string = driver.findElement(By.xpath("//*[text()='File Uploaded!']")).getText();
-        assertEquals(text_string, "File Uploaded!", "File is not Uploaded!"); //Проверка наличия сообщения
+        String successMessageText = driver.findElement(By.xpath("//*[text()='File Uploaded!']")).getText();
+        assertEquals(successMessageText, "File Uploaded!", "File is not Uploaded!"); //Проверка наличия сообщения
         // об успешной загрузке файла
     }
 }

@@ -27,15 +27,19 @@ public class DownloadTest extends BaseTest {
         WebElement el = driver.findElement(By.partialLinkText("152360"));
         el.click();
 
-        Thread.sleep(7000);
+        Thread.sleep(4000);
         File folder = new File(System.getProperty("user.dir")); //Step 3: Check The File in Folder
 
         File[] listOfFiles = folder.listFiles();  //List the files on that folder
         boolean found = false;
         File f = null;
         int count = 0;
+
+
         while (found != true | count < 10) {
+
             for (File listOfFile : listOfFiles) { //Look for the file in the files
+
                 if (listOfFile.isFile()) {
                     String fileName = listOfFile.getName();
                     System.out.println(fileName);
